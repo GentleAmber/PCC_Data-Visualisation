@@ -1,0 +1,10 @@
+#1. The following codes do great job creating two lists. One is [1,2,3,...,1000], the other has elements that are the squares of those in the first list.
+x_values=range(1,1001)
+y_values=[x**2 for x in x_values]
+
+# But I'm trying to figure out why the following codes can't do the same thing:
+y_values=list()
+x_values=range(1,1001)
+y_values.append(x**2 for x in x_values)
+
+# I asked GPT and it tells me because "x**2 for x in x_values" is a generator expression like a list comprehension (y_values in the first piece). So instead of appending values, the append function appends the whole generator.
