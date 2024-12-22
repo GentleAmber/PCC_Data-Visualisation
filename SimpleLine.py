@@ -1,15 +1,23 @@
+import numpy as np
 import matplotlib.pyplot as plt
-squares=list()
-input_value=list()
-for x in range(1,6):
-    squares.append(x**2)
-    input_value.append(x)
-plt.style.use('seaborn-v0_8-pastel')
-fig, ax= plt.subplots()
-ax.plot(input_value,squares, linewidth=3)
-ax.set_title("Square Numbers", fontsize=24)
-ax.set_xlabel("Value",fontsize=14)
-ax.set_ylabel("Square of Value",fontsize=14)
-ax.tick_params(labelsize=14)
+x = np.linspace(0, 2*np.pi, 400)
+y = np.sin(x**2)
 
-plt.show()
+# One figure
+fig, ax = plt.subplots()
+ax.plot(x, y)
+ax.set_title('Simple plot')
+plt.savefig('SimplePlot.png')
+
+# Two figures?
+f, (ax1, ax2) = plt.subplots(1, 2,sharey=True)
+ax1.plot(x, y)
+ax1.set_title('Sharing Y axis')
+ax2.scatter(x, y)
+plt.savefig('SharingYaxis.png')
+
+# Create four polar Axes and access them through the returned array
+fig, axs = plt.subplots(2, 2, subplot_kw=dict(projection="polar"))
+axs[0, 0].plot(x, y)
+axs[1, 1].scatter(x, y)
+plt.savefig("FourPolar.png")
