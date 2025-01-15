@@ -8,3 +8,5 @@ x_values=range(1,1001)
 y_values.append(x**2 for x in x_values)
 
 # I asked GPT and it tells me because "x**2 for x in x_values" is a generator expression like a list comprehension (y_values in the first piece). So instead of appending values, the append function appends the whole generator.
+
+test
